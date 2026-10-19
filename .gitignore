@@ -1,0 +1,19 @@
+
+# Front-end
+front/node_modules/
+front/dist/
+
+# Back-end
+back/target/
+
+# Arquivos de ambiente
+.env
+.env.*
+!.env.example
+
+# Editor e sistema
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db

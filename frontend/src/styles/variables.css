@@ -1,0 +1,41 @@
+:root {
+  /* Cores principais */
+  --color-bg: #0b0c0f;
+  --color-bg-secondary: #111216;
+  --color-surface: #18191e;
+  --color-surface-light: #1f2026;
+
+  /* Vermelho F1 */
+  --color-primary: #e10600;
+  --color-primary-hover: #ff1a14;
+
+  /* Verde / status */
+  --color-success: #00d4b8;
+  --color-success-dark: #00a896;
+
+  /* Texto */
+  --color-text: #f2f2f2;
+  --color-text-secondary: #a5a5ad;
+  --color-text-muted: #6f7078;
+
+  /* Bordas */
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-light: rgba(255, 255, 255, 0.14);
+
+  /* Estados */
+  --color-warning: #ffb000;
+  --color-danger: #ff3b30;
+
+  /* Tipografia */
+  --font-primary: Arial, Helvetica, sans-serif;
+
+  /* Layout */
+  --container-width: 1400px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Transições */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}

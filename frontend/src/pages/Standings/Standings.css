@@ -1,0 +1,1738 @@
+/* =========================================
+   STANDINGS
+========================================= */
+
+.standings-page {
+  width: 100%;
+  min-height: 100vh;
+
+  padding: 30px 28px 70px;
+
+  box-sizing: border-box;
+
+  background: var(--color-background);
+}
+
+
+/* =========================================
+   ESTADO
+========================================= */
+
+.standings-state {
+  min-height: 70vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 15px;
+
+  color: var(--color-text-muted);
+
+  font-size: 8px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.1em;
+}
+
+
+.standings-loader {
+  width: 30px;
+
+  height: 30px;
+
+  border: 2px solid
+    var(--color-border);
+
+  border-top-color:
+    var(--color-primary);
+
+  border-radius: 50%;
+
+  animation:
+    standings-spin
+    0.8s
+    linear
+    infinite;
+}
+
+
+@keyframes standings-spin {
+
+  to {
+    transform:
+      rotate(360deg);
+  }
+
+}
+
+
+.standings-state button {
+  border: none;
+
+  padding: 10px 15px;
+
+  background:
+    var(--color-primary);
+
+  color: #fff;
+
+  font-family: inherit;
+
+  font-size: 7px;
+
+  font-weight: 900;
+
+  cursor: pointer;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.standings-header {
+  width: 100%;
+
+  max-width: 1500px;
+
+  margin: 0 auto;
+}
+
+
+/* =========================================
+   TOPO
+========================================= */
+
+.standings-header-top {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    220px;
+
+  gap: 30px;
+
+  align-items: end;
+}
+
+
+/* =========================================
+   EYEBROW
+========================================= */
+
+.standings-eyebrow {
+  display: inline-block;
+
+  padding: 7px 10px;
+
+  background:
+    rgba(0, 255, 170, 0.06);
+
+  border: 1px solid
+    rgba(0, 255, 170, 0.15);
+
+  color:
+    var(--color-success);
+
+  font-size: 6px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.1em;
+}
+
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+.standings-header h1 {
+  margin: 18px 0 0;
+
+  color:
+    var(--color-text);
+
+  font-size:
+    clamp(
+      36px,
+      5vw,
+      68px
+    );
+
+  font-weight: 900;
+
+  line-height: 0.9;
+
+  letter-spacing:
+    -0.06em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.standings-header
+  > .standings-header-top
+  > div:first-child
+  > strong {
+
+  display: block;
+
+  margin-top: 3px;
+
+  color:
+    var(--color-primary);
+
+  font-size:
+    clamp(
+      42px,
+      5vw,
+      72px
+    );
+
+  font-weight: 900;
+
+  line-height: 0.9;
+
+  letter-spacing:
+    -0.06em;
+}
+
+
+.standings-header p {
+  max-width: 700px;
+
+  margin-top: 15px;
+
+  color:
+    var(--color-text-secondary);
+
+  font-size: 9px;
+
+  font-weight: 500;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   RESUMO
+========================================= */
+
+.standings-summary {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 15px;
+
+  background:
+    var(--color-surface);
+
+  border: 1px solid
+    var(--color-border);
+
+  border-top: 2px solid
+    var(--color-primary);
+}
+
+
+.standings-summary-icon {
+  width: 35px;
+
+  height: 35px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background:
+    rgba(225, 6, 0, 0.12);
+
+  color:
+    var(--color-primary);
+}
+
+
+.standings-summary span {
+  display: block;
+
+  color:
+    var(--color-text-muted);
+
+  font-size: 5px;
+
+  font-weight: 900;
+
+  letter-spacing:
+    0.08em;
+}
+
+
+.standings-summary strong {
+  display: inline-block;
+
+  margin-top: 3px;
+
+  color:
+    var(--color-text);
+
+  font-size: 27px;
+
+  font-weight: 900;
+
+  line-height: 1;
+}
+
+
+.standings-summary small {
+  margin-left: 4px;
+
+  color:
+    var(--color-success);
+
+  font-size: 5px;
+
+  font-weight: 900;
+}
+
+
+/* =========================================
+   TOP 3
+========================================= */
+
+.standings-featured {
+
+  width: 100%;
+
+  margin: 28px 0 10px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+  gap: 12px;
+}
+
+
+.standings-feature-card {
+
+  position: relative;
+
+  min-width: 0;
+
+  min-height: 245px;
+
+  padding: 16px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  box-sizing: border-box;
+
+  background:
+    var(--color-surface);
+
+  border: 1px solid
+    var(--color-border);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+
+.standings-feature-card:hover {
+
+  transform:
+    translateY(-3px);
+
+  border-color:
+    rgba(
+      225,
+      6,
+      0,
+      0.45
+    );
+}
+
+
+.standings-feature-card::before {
+
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  right: 0;
+
+  height: 3px;
+
+  background:
+    var(--color-primary);
+}
+
+
+.standings-feature-card.position-2::before {
+
+  background:
+    #ff9500;
+}
+
+
+.standings-feature-card.position-3::before {
+
+  background:
+    #ff1744;
+}
+
+
+/* =========================================
+   TOP DO CARD
+========================================= */
+
+.featured-top {
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 8px;
+}
+
+
+.featured-top > strong {
+
+  color:
+    var(--color-primary);
+
+  font-size: 36px;
+
+  font-weight: 900;
+
+  line-height: 0.8;
+}
+
+
+.position-2
+  .featured-top
+  > strong {
+
+  color:
+    #ff9500;
+}
+
+
+.position-3
+  .featured-top
+  > strong {
+
+  color:
+    #ff1744;
+}
+
+
+.featured-top > span {
+
+  max-width: 180px;
+
+  color:
+    var(--color-text);
+
+  font-size: 7px;
+
+  font-weight: 900;
+
+  line-height: 1.2;
+
+  letter-spacing:
+    0.04em;
+
+  text-transform:
+    uppercase;
+}
+
+
+/* =========================================
+   NÚMERO DO PILOTO
+========================================= */
+
+.featured-number {
+
+  position: absolute;
+
+  top: 18px;
+
+  right: 15px;
+
+  color:
+    var(--color-text);
+
+  font-size: 25px;
+
+  font-weight: 900;
+
+  line-height: 1;
+}
+
+.driver-photo {
+  display: block;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.featured-driver-photo {
+  width: 100%;
+  height: 100%;
+}
+
+.table-driver-photo {
+  width: 34px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 4px;
+}
+
+@media (max-width: 600px) {
+  .table-driver-photo {
+    width: 28px;
+    height: 36px;
+  }
+}
+
+
+/* =========================================
+   CONTEÚDO DO CARD
+========================================= */
+
+.featured-content {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 15px;
+}
+
+
+.featured-avatar {
+
+  flex-shrink: 0;
+
+  width: 55px;
+
+  height: 55px;
+
+  overflow: hidden;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.05
+    );
+
+  border: 1px solid
+    var(--color-border);
+}
+
+
+.featured-avatar-placeholder {
+
+  width: 100%;
+
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #20242a,
+      #101216
+    );
+
+  color:
+    var(--color-text);
+
+  font-size: 10px;
+
+  font-weight: 900;
+}
+
+
+.featured-driver {
+
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.featured-driver strong {
+
+  color:
+    var(--color-text);
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  line-height: 1;
+
+  text-transform:
+    uppercase;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow:
+    ellipsis;
+}
+
+
+.featured-driver span {
+
+  color:
+    var(--color-text-secondary);
+
+  font-size: 7px;
+
+  font-weight: 800;
+
+  text-transform:
+    uppercase;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow:
+    ellipsis;
+}
+
+
+.featured-driver small {
+
+  color:
+    var(--color-text-muted);
+
+  font-size: 7px;
+
+  font-weight: 900;
+
+  text-transform:
+    uppercase;
+}
+
+
+/* =========================================
+   PONTOS
+========================================= */
+
+.featured-points {
+
+  margin-top: 14px;
+}
+
+
+.featured-points > span {
+
+  display: block;
+
+  color:
+    var(--color-text-muted);
+
+  font-size: 7px;
+
+  font-weight: 900;
+
+  letter-spacing:
+    0.08em;
+}
+
+
+.featured-points > div {
+
+  display: flex;
+
+  align-items: baseline;
+
+  justify-content: flex-end;
+
+  gap: 4px;
+}
+
+
+.featured-points strong {
+
+  color:
+    var(--color-text);
+
+  font-size: 27px;
+
+  font-weight: 900;
+
+  line-height: 1;
+}
+
+
+.position-1
+  .featured-points
+  strong {
+
+  color:
+    var(--color-primary);
+}
+
+
+.featured-points small {
+
+  color:
+    var(--color-text-muted);
+
+  font-size: 7px;
+
+  font-weight: 900;
+}
+
+
+/* =========================================
+   BARRA DO TOP 3
+========================================= */
+
+.featured-progress {
+
+  width: 100%;
+
+  height: 5px;
+
+  margin-top: 5px;
+
+  overflow: hidden;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+}
+
+
+.featured-progress span {
+
+  display: block;
+
+  height: 100%;
+
+  background:
+    var(--color-primary);
+
+  transition:
+    width 0.5s ease;
+}
+
+
+.position-2
+  .featured-progress
+  span {
+
+  background:
+    #ff9500;
+}
+
+
+.position-3
+  .featured-progress
+  span {
+
+  background:
+    #ff1744;
+}
+
+
+/* =========================================
+   ESTATÍSTICAS DO TOP 3
+========================================= */
+
+.featured-stats {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      1fr
+    );
+
+  gap: 3px;
+
+  margin-top: 7px;
+}
+
+
+.featured-stats > div {
+
+  padding: 7px 4px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.035
+    );
+
+  text-align: center;
+}
+
+
+.featured-stats strong {
+
+  display: block;
+
+  color:
+    var(--color-text);
+
+  font-size: 9px;
+
+  font-weight: 900;
+}
+
+
+.featured-stats span {
+
+  display: block;
+
+  margin-top: 3px;
+
+  color:
+    var(--color-text-muted);
+
+  font-size: 6px;
+
+  font-weight: 900;
+
+  letter-spacing:
+    0.05em;
+}
+
+
+/* =========================================
+   CONTROLES
+========================================= */
+
+.standings-controls {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-top: 30px;
+
+  padding-bottom: 10px;
+
+  border-bottom:
+    1px solid
+    var(--color-border);
+}
+
+
+/* =========================================
+   ABAS
+========================================= */
+
+.standings-tabs {
+
+  display: flex;
+
+  gap: 4px;
+}
+
+
+.standings-tabs button {
+
+  border: none;
+
+  padding: 11px 15px;
+
+  background:
+    var(--color-surface);
+
+  color:
+    var(--color-text-muted);
+
+  font-family: inherit;
+
+  font-size: 6px;
+
+  font-weight: 900;
+
+  letter-spacing:
+    0.06em;
+
+  cursor: pointer;
+
+  transition:
+    background
+      var(--transition-fast),
+    color
+      var(--transition-fast);
+}
+
+
+.standings-tabs button:hover {
+
+  color:
+    var(--color-text);
+}
+
+
+.standings-tabs button.active {
+
+  background:
+    var(--color-primary);
+
+  color: #fff;
+}
+
+
+/* =========================================
+   PESQUISA
+========================================= */
+
+.standings-search {
+
+  width: 250px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 10px 12px;
+
+  background:
+    var(--color-surface);
+
+  border: 1px solid
+    var(--color-border);
+
+  color:
+    var(--color-text-muted);
+
+  box-sizing: border-box;
+}
+
+
+.standings-search input {
+
+  width: 100%;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  color:
+    var(--color-text);
+
+  font-family: inherit;
+
+  font-size: 7px;
+}
+
+
+.standings-search input::placeholder {
+
+  color:
+    var(--color-text-muted);
+}
+
+
+/* =========================================
+   TABELA
+========================================= */
+
+.standings-table-panel {
+
+  
+  width: 100%;
+  max-width: 1500px;
+  margin: 10px auto 0;
+  background:
+    var(--color-surface);
+  border: 1px solid
+    var(--color-border);
+  overflow: hidden;
+}
+
+
+/* =========================================
+   HEADER DA TABELA
+========================================= */
+.standings-table-header {
+
+  display: grid;
+
+  grid-template-columns:
+    45px
+    minmax(180px, 1.3fr)
+    minmax(150px, 1fr)
+    60px
+    65px
+    minmax(100px, 1fr)
+    35px
+    45px;
+
+  gap: 10px;
+
+  align-items: center;
+
+  padding: 10px 14px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.045
+    );
+
+  color:
+    var(--color-text-muted);
+
+  font-size: 7px;
+
+  font-weight: 900;
+
+  letter-spacing:
+    0.08em;
+}
+
+
+/* =========================================
+   CORPO DA TABELA
+========================================= */
+
+.standings-table-body {
+
+  max-height: 560px;
+
+  overflow-y: auto;
+
+  overflow-x: hidden;
+
+  scrollbar-width: thin;
+
+  scrollbar-color:
+    var(--color-primary)
+    var(--color-surface);
+}
+
+
+/* SCROLLBAR CHROME / EDGE */
+
+.standings-table-body::-webkit-scrollbar {
+
+  width: 5px;
+}
+
+
+.standings-table-body::-webkit-scrollbar-track {
+
+  background:
+    var(--color-surface);
+}
+
+
+.standings-table-body::-webkit-scrollbar-thumb {
+
+  background:
+    var(--color-primary);
+}
+
+
+/* =========================================
+   LINHAS
+========================================= */
+
+.standings-table-row {
+
+  display: grid;
+
+  grid-template-columns:
+    45px
+    minmax(180px, 1.3fr)
+    minmax(150px, 1fr)
+    60px
+    65px
+    minmax(100px, 1fr)
+    35px
+    45px;
+
+  gap: 10px;
+
+  align-items: center;
+
+  min-height: 62px;
+
+  padding: 0 14px;
+
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.04
+    );
+
+  transition:
+    background 0.2s ease;
+}
+
+
+.standings-table-row:hover {
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+}
+
+.table-podiums {
+
+  color:
+    var(--color-text);
+
+  font-size: 8px;
+
+  font-weight: 900;
+
+  text-align: center;
+}
+
+
+/* =========================================
+   POSIÇÃO
+========================================= */
+
+.table-position {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-start;
+
+  color:
+    var(--color-text-muted);
+
+  font-size: 10px;
+
+  font-weight: 900;
+}
+
+
+.position-number {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 20px;
+
+  height: 20px;
+
+  font-size: 9px;
+
+  font-weight: 900;
+}
+
+
+/* =========================================
+   TOP 3
+========================================= */
+
+.top-position-1
+  .position-number {
+  background: #d4af37;
+  color: #171717;
+  border-radius: 2px;
+
+}
+
+
+.top-position-2
+  .position-number {
+  background: #c0c0c0;
+  color: #171717;
+  border-radius: 2px;
+}
+
+
+.top-position-3
+  .position-number {
+  background: #cd7f32;
+  color: #171717;
+  border-radius: 2px;
+}
+
+
+.standings-table-row:first-child
+  .table-position {
+
+  color:
+    var(--color-primary);
+}
+
+
+/* =========================================
+   PILOTO / EQUIPE
+========================================= */
+.table-driver {
+
+  min-width: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+}
+
+
+.driver-team-marker {
+
+  width: 4px;
+
+  height: 28px;
+
+  flex-shrink: 0;
+
+  border-radius: 2px;
+
+  background:
+    var(--team-color);
+}
+
+
+.driver-info {
+
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.table-driver strong {
+
+  color:
+    var(--color-text);
+
+  font-size: 9px;
+
+  font-weight: 900;
+
+  text-transform:
+    uppercase;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow:
+    ellipsis;
+}
+
+
+.table-driver span {
+
+  color:
+    var(--color-text-muted);
+
+  font-size: 7px;
+
+  font-weight: 900;
+
+  text-transform:
+    uppercase;
+}
+
+/* =========================================
+   EQUIPE
+========================================= */
+
+.table-team {
+
+  color:
+    var(--color-text-secondary);
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow:
+    ellipsis;
+}
+
+/* =========================================
+   CORES DAS EQUIPES
+========================================= */
+
+.team-red-bull {
+
+  --team-color: #3671c6;
+
+}
+
+
+.team-mclaren {
+
+  --team-color: #ff8000;
+
+}
+
+
+.team-ferrari {
+
+  --team-color: #e8002d;
+
+}
+
+
+.team-mercedes {
+
+  --team-color: #27f4d2;
+
+}
+
+
+.team-aston-martin {
+
+  --team-color: #229971;
+
+}
+
+
+.team-alpine {
+
+  --team-color: #ff87bc;
+
+}
+
+
+.team-williams {
+
+  --team-color: #64c4ff;
+
+}
+
+
+.team-racing-bulls {
+
+  --team-color: #6692ff;
+
+}
+
+
+.team-sauber {
+
+  --team-color: #52e252;
+
+}
+
+
+.team-haas {
+
+  --team-color: #b6babd;
+
+}
+
+
+.team-cadillac {
+
+  --team-color: #c7c7c7;
+
+}
+
+
+.team-default {
+
+  --team-color:
+    var(--color-primary);
+
+}
+
+
+/* =========================================
+   PONTOS
+========================================= */
+
+.table-points strong {
+
+  color:
+    var(--color-text);
+
+  font-size: 14px;
+
+  font-weight: 900;
+}
+
+
+/* =========================================
+   DELTA
+========================================= */
+
+.table-delta {
+
+  color:
+    var(--color-primary);
+
+  font-size: 6px;
+
+  font-weight: 900;
+
+  white-space: nowrap;
+}
+
+
+.standings-table-row:first-child
+  .table-delta {
+
+  color:
+    var(--color-success);
+}
+
+
+/* =========================================
+   BARRA
+========================================= */
+
+.table-bar > div {
+
+  width: 100%;
+
+  height: 5px;
+
+  overflow: hidden;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.07
+    );
+}
+
+
+.table-bar span {
+
+  display: block;
+
+  height: 100%;
+
+  background:
+    var(--team-color);
+
+  transition:
+    width 0.5s ease;
+}
+
+
+/* =========================================
+   VITÓRIAS
+========================================= */
+
+.table-wins {
+
+  color:
+    var(--color-text);
+
+  font-size: 8px;
+
+  font-weight: 900;
+
+  text-align: center;
+}
+
+
+/* =========================================
+   VAZIO
+========================================= */
+
+.standings-empty {
+
+  padding: 50px 20px;
+
+  text-align: center;
+
+  color:
+    var(--color-text-muted);
+
+  font-size: 8px;
+
+  font-weight: 900;
+}
+
+
+/* =========================================
+   RESPONSIVO — 1100
+========================================= */
+
+@media (max-width: 1100px) {
+
+  .standings-header-top {
+
+    grid-template-columns: 1fr;
+
+  }
+
+
+  .standings-summary {
+
+    width: 220px;
+
+  }
+
+
+  .standings-featured {
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+  }
+
+
+  .standings-table-panel {
+
+    overflow-x: auto;
+
+  }
+
+
+  .standings-table-header,
+  .standings-table-row {
+
+    min-width: 900px;
+
+  }
+
+}
+
+
+/* =========================================
+   RESPONSIVO — 700
+========================================= */
+
+@media (max-width: 700px) {
+
+  .standings-page {
+
+    padding:
+      20px 14px 50px;
+
+  }
+
+
+  .standings-header h1 {
+
+    font-size: 36px;
+
+  }
+
+
+  .standings-header
+    > .standings-header-top
+    > div:first-child
+    > strong {
+
+    font-size: 44px;
+
+  }
+
+
+  .standings-featured {
+
+    grid-template-columns:
+      1fr;
+
+    margin-top: 20px;
+
+  }
+
+
+  .standings-feature-card {
+
+    min-height: 220px;
+
+  }
+
+
+  .standings-controls {
+
+    align-items: stretch;
+
+    flex-direction: column;
+
+  }
+
+
+  .standings-tabs {
+
+    width: 100%;
+
+  }
+
+
+  .standings-tabs button {
+
+    flex: 1;
+
+    padding:
+      10px 6px;
+
+    font-size: 5px;
+
+  }
+
+
+  .standings-search {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+  }
+
+
+  .standings-table-body {
+
+    max-height: 480px;
+
+  }
+
+}
+
+
+/* =========================================
+   RESPONSIVO — 450
+========================================= */
+
+@media (max-width: 450px) {
+
+  .standings-page {
+
+    padding:
+      15px 10px 40px;
+
+  }
+
+
+  .standings-header h1 {
+
+    font-size: 30px;
+
+  }
+
+
+  .standings-header
+    > .standings-header-top
+    > div:first-child
+    > strong {
+
+    font-size: 38px;
+
+  }
+
+
+  .standings-summary {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+  }
+
+
+  .standings-feature-card {
+
+    padding: 14px;
+
+  }
+
+
+  .featured-top > strong {
+
+    font-size: 30px;
+
+  }
+
+
+  .featured-points strong {
+
+    font-size: 24px;
+
+  }
+
+}

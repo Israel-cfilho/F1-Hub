@@ -1,0 +1,1688 @@
+/* =========================================
+   CALENDAR
+========================================= */
+
+.calendar {
+  width: 100%;
+  margin: 0;
+  padding: 25px 20px 70px;
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   LOADING / ERROR
+========================================= */
+
+.calendar-loading,
+.calendar-error {
+  min-height: 60vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--color-text-muted);
+
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+
+/* =========================================
+   CABEÇALHO
+========================================= */
+
+.calendar-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  padding-bottom: 22px;
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+
+.calendar-eyebrow {
+  display: block;
+  margin-bottom: 10px;
+
+  color: var(--color-primary);
+
+  font-size: 7px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+
+.calendar-heading h1 {
+  margin: 0;
+
+  color: var(--color-text);
+
+  font-size: clamp(38px, 5vw, 64px);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+}
+
+
+.calendar-heading h1 span {
+  color: var(--color-primary);
+}
+
+
+.calendar-heading p {
+  margin-top: 14px;
+
+  color: var(--color-text-muted);
+
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+
+/* =========================================
+   PROGRESSO
+========================================= */
+
+.calendar-progress {
+  margin-top: 18px;
+}
+
+
+.calendar-progress-top {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+
+.calendar-progress-top strong {
+  color: var(--color-text);
+
+  font-size: 7px;
+  font-weight: 900;
+  letter-spacing: 0.07em;
+}
+
+
+.calendar-progress-top span {
+  color: var(--color-success);
+
+  font-size: 7px;
+  font-weight: 900;
+}
+
+
+.calendar-progress-top small {
+  margin-left: auto;
+
+  color: var(--color-text-muted);
+
+  font-size: 7px;
+  font-weight: 800;
+}
+
+
+.calendar-progress-bar {
+  position: relative;
+
+  width: 100%;
+  height: 3px;
+
+  margin-top: 9px;
+
+  background: var(--color-surface-light);
+
+  overflow: hidden;
+}
+
+
+.calendar-progress-bar span {
+  display: block;
+
+  height: 100%;
+
+  background: var(--color-primary);
+
+  transition: width 0.4s ease;
+}
+
+
+/* =========================================
+   FILTROS
+========================================= */
+
+.calendar-filters {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  margin-top: 16px;
+}
+
+
+.calendar-filters button {
+  padding: 9px 12px;
+
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+
+  color: var(--color-text-secondary);
+
+  font-size: 7px;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+
+  cursor: pointer;
+
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+
+.calendar-filters button:hover {
+  background: var(--color-surface-light);
+  color: var(--color-text);
+}
+
+
+.calendar-filters button.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+
+  color: #fff;
+}
+
+
+.calendar-search {
+  min-width: 190px;
+
+  margin-left: auto;
+
+  padding: 9px 12px;
+
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+
+  color: var(--color-text);
+
+  font-size: 12px;
+
+  outline: none;
+}
+
+
+.calendar-search:focus {
+  border-color: var(--color-primary);
+}
+
+
+.calendar-search::placeholder {
+  font-size: 10px;
+  color: var(--color-text-muted);
+}
+
+
+/* =========================================
+   PRÓXIMA CORRIDA
+========================================= */
+
+.next-race {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.45fr)
+    minmax(360px, 0.95fr);
+
+  min-height: 560px;
+
+  margin-top: 20px;
+
+  background:
+    radial-gradient(
+      circle at 25% 50%,
+      rgba(225, 6, 0, 0.08),
+      transparent 45%
+    ),
+    linear-gradient(
+      135deg,
+      var(--color-surface),
+      var(--color-bg-secondary)
+    );
+
+  border: 1px solid var(--color-border);
+  border-top: 2px solid var(--color-primary);
+
+  overflow: hidden;
+}
+
+
+/* =========================================
+   LADO ESQUERDO
+========================================= */
+
+.next-race-main {
+  min-width: 0;
+
+  padding: 30px 32px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+.next-race-top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+
+.next-race-top > div {
+  display: flex;
+
+  align-items: center;
+}
+
+
+.next-race-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 6px 9px;
+
+  background: var(--color-primary);
+
+  color: #fff;
+
+  font-size: 7px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.07em;
+}
+
+
+.next-race-round {
+  margin-left: 9px;
+
+  color: var(--color-success);
+
+  font-size: 7px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.07em;
+}
+
+
+.next-race-country {
+  color: var(--color-text-secondary);
+
+  font-size: 8px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================
+   DETALHES DA CORRIDA
+========================================= */
+
+.next-race-details {
+  margin-top: 35px;
+}
+
+
+.next-race-details h2 {
+  max-width: 800px;
+
+  margin: 0;
+
+  color: var(--color-text);
+
+  font-size: clamp(36px, 4vw, 58px);
+
+  font-weight: 900;
+
+  line-height: 0.9;
+
+  letter-spacing: -0.055em;
+
+  text-transform: uppercase;
+}
+
+
+.next-race-circuit {
+  margin-top: 15px;
+
+  color: var(--color-text-secondary);
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  line-height: 1.4;
+}
+
+
+.next-race-location {
+  margin-top: 4px;
+
+  color: var(--color-success);
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================
+   DATA / HORÁRIOS
+========================================= */
+
+.next-race-date {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 32px;
+
+  margin-top: 28px;
+}
+
+
+.next-race-date > div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+
+.next-race-date span {
+  color: var(--color-text-muted);
+
+  font-size: 6px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.1em;
+}
+
+
+.next-race-date strong {
+  color: var(--color-text);
+
+  font-size: 13px;
+
+  font-weight: 900;
+}
+
+
+/* =========================================
+   COUNTDOWN
+========================================= */
+
+.next-race-countdown {
+  margin-top: 30px;
+
+  padding-top: 16px;
+
+  border-top: 1px solid var(--color-border);
+}
+
+
+.countdown-label {
+  display: block;
+
+  color: var(--color-text-muted);
+
+  font-size: 7px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+}
+
+
+.countdown-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 6px;
+
+  max-width: 620px;
+
+  margin-top: 10px;
+}
+
+
+.countdown-item {
+  position: relative;
+
+  padding: 14px 8px 11px;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  border: 1px solid var(--color-border);
+
+  text-align: center;
+
+  overflow: hidden;
+}
+
+
+.countdown-item::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  bottom: 0;
+
+  width: 100%;
+
+  height: 2px;
+
+  background: var(--color-primary);
+
+  opacity: 0.65;
+}
+
+
+.countdown-item strong {
+  display: block;
+
+  color: var(--color-text);
+
+  font-size: 30px;
+
+  font-weight: 900;
+
+  line-height: 1;
+
+  letter-spacing: -0.04em;
+}
+
+
+.countdown-item span {
+  display: block;
+
+  margin-top: 6px;
+
+  color: var(--color-text-muted);
+
+  font-size: 6px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.12em;
+}
+
+
+.countdown-item:last-child strong {
+  color: var(--color-primary);
+}
+
+
+/* =========================================
+   BOTÕES
+========================================= */
+
+.next-race-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 25px;
+}
+
+
+.next-race-primary,
+.next-race-secondary {
+  border: none;
+
+  cursor: pointer;
+
+  font-family: inherit;
+
+  font-size: 8px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.05em;
+
+  text-transform: uppercase;
+
+  transition:
+    transform var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+
+.next-race-primary {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 12px 16px;
+
+  background: var(--color-primary);
+
+  color: #fff;
+}
+
+
+.next-race-secondary {
+  padding: 12px 8px;
+
+  background: transparent;
+
+  color: var(--color-text-secondary);
+}
+
+
+.next-race-primary:hover,
+.next-race-secondary:hover {
+  transform: translateY(-2px);
+
+  opacity: 0.85;
+}
+
+
+/* =========================================
+   LADO DIREITO
+========================================= */
+
+.next-race-side {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  padding: 18px 18px 20px;
+
+  background:
+    rgba(0, 0, 0, 0.15);
+
+  border-left: none;
+}
+
+
+/* =========================================
+   MAPA DO CIRCUITO
+========================================= */
+
+.next-race-track {
+  position: relative;
+
+  flex: 0 0 285px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(225, 6, 0, 0.10),
+      transparent 65%
+    );
+}
+
+
+.track-header {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 2px;
+}
+
+
+.track-header span {
+  color: var(--color-text-muted);
+
+  font-size: 7px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.08em;
+}
+
+
+.track-header small {
+  color: var(--color-success);
+
+  font-size: 6px;
+
+  font-weight: 900;
+}
+
+
+.next-race-track img {
+  display: block;
+
+  width: 100%;
+
+  max-width: 500px;
+
+  height: 245px;
+
+  object-fit: contain;
+
+  opacity: 0.95;
+
+  filter: brightness(0) invert(1);
+
+  transform: scale(1.15);
+
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
+}
+
+
+.next-race:hover .next-race-track img {
+  transform: scale(1.22);
+
+  opacity: 1;
+}
+
+
+.next-race-track span {
+  color: var(--color-text-muted);
+
+  font-size: 7px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.08em;
+}
+
+
+/* =========================================
+   CRONOGRAMA — LADO DIREITO
+========================================= */
+
+.next-race-side .next-race-schedule {
+  width: 100%;
+
+  max-width: none;
+
+  margin-top: 8px;
+
+  padding-top: 13px;
+
+  border-top: 1px solid var(--color-border);
+}
+
+
+.next-race-side .schedule-title {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: var(--color-text-muted);
+
+  font-size: 6px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+}
+
+
+.schedule-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.schedule-item {
+  display: grid;
+
+  grid-template-columns:
+    82px
+    minmax(0, 1fr)
+    48px;
+
+  align-items: center;
+
+  min-height: 31px;
+
+  padding: 0 8px;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  border: 1px solid var(--color-border);
+
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+
+.schedule-item:hover {
+  background:
+    rgba(225, 6, 0, 0.06);
+
+  border-color:
+    rgba(225, 6, 0, 0.35);
+}
+
+
+.schedule-date {
+  color: var(--color-text-muted);
+
+  font-size: 6px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.04em;
+
+  text-transform: uppercase;
+}
+
+
+.schedule-item strong {
+  color: var(--color-text);
+
+  font-size: 7px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.04em;
+
+  text-align: center;
+}
+
+
+.schedule-time {
+  color: var(--color-success);
+
+  font-size: 7px;
+
+  font-weight: 900;
+
+  text-align: right;
+}
+
+
+/* =========================================
+   SEÇÃO DE CORRIDAS
+========================================= */
+
+.calendar-races {
+  margin-top: 55px;
+}
+
+
+.section-title {
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  padding-bottom: 15px;
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+
+.section-title span {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: var(--color-primary);
+
+  font-size: 7px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.12em;
+}
+
+
+.section-title h2 {
+  margin: 0;
+
+  color: var(--color-text);
+
+  font-size: 20px;
+
+  font-weight: 900;
+
+  letter-spacing: -0.03em;
+}
+
+
+.section-title small {
+  color: var(--color-text-muted);
+
+  font-size: 7px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.08em;
+}
+
+
+/* =========================================
+   GRID DE CORRIDAS
+========================================= */
+
+.race-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 12px;
+
+  margin-top: 16px;
+}
+
+
+.race-card {
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  min-width: 0;
+
+  min-height: 460px;
+
+  padding: 18px;
+
+  background: var(--color-surface);
+
+  border: 1px solid var(--color-border);
+
+  overflow: hidden;
+
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    background var(--transition-fast);
+}
+
+
+.race-card:hover {
+  transform: translateY(-3px);
+
+  background: var(--color-surface-light);
+
+  border-color: rgba(225, 6, 0, 0.45);
+}
+
+
+.race-card.next {
+  border-top: 2px solid var(--color-primary);
+}
+
+
+.race-card-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 10px;
+}
+
+
+.race-round {
+  color: var(--color-text-muted);
+
+  font-size: 6px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.1em;
+}
+
+
+.race-status {
+  padding: 4px 6px;
+
+  font-size: 5px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.08em;
+}
+
+
+.race-status.completed {
+  color: var(--color-text-muted);
+
+  background: rgba(255, 255, 255, 0.04);
+}
+
+
+.race-status.next {
+  color: #fff;
+
+  background: var(--color-primary);
+}
+
+
+.race-status.upcoming {
+  color: var(--color-success);
+
+  background: rgba(0, 255, 150, 0.05);
+}
+
+
+.race-card-country {
+  margin-top: 22px;
+
+  color: var(--color-primary);
+
+  font-size: 7px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+}
+
+
+.race-card h3 {
+  margin-top: 8px;
+
+  color: var(--color-text);
+
+  font-size: 23px;
+
+  font-weight: 900;
+
+  line-height: 0.95;
+
+  letter-spacing: -0.04em;
+
+  text-transform: uppercase;
+}
+
+
+.race-circuit {
+  margin-top: 8px;
+
+  color: var(--color-text-secondary);
+
+  font-size: 8px;
+
+  font-weight: 700;
+}
+
+
+.race-location {
+  margin-top: 3px;
+
+  color: var(--color-text-muted);
+
+  font-size: 7px;
+}
+
+
+/* =========================================
+   CIRCUITO DOS CARDS
+========================================= */
+
+.circuit-layout {
+  height: 150px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin: 12px 0;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.025),
+      transparent 65%
+    );
+}
+
+
+.circuit-layout img {
+  width: 85%;
+
+  height: 85%;
+
+  object-fit: contain;
+
+  filter: brightness(0) invert(1);
+
+  opacity: 0.72;
+
+  transition:
+    transform 0.4s ease,
+    opacity 0.4s ease;
+}
+
+
+.race-card:hover .circuit-layout img {
+  transform: scale(1.06);
+
+  opacity: 1;
+}
+
+
+.circuit-layout span {
+  color: var(--color-text-muted);
+
+  font-size: 6px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.08em;
+}
+
+
+/* =========================================
+   DATA DOS CARDS
+========================================= */
+
+.race-card-date {
+  margin-top: auto;
+
+  padding-top: 15px;
+
+  border-top: 1px solid var(--color-border);
+}
+
+
+.race-card-date > strong {
+  display: block;
+
+  color: var(--color-text);
+
+  font-size: 11px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.03em;
+}
+
+
+.race-times {
+  display: flex;
+
+  align-items: center;
+
+  gap: 24px;
+
+  margin-top: 10px;
+}
+
+
+.race-times > div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.race-times span {
+  color: var(--color-text-muted);
+
+  font-size: 6px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.1em;
+}
+
+
+.race-times strong {
+  color: var(--color-text);
+
+  font-size: 11px;
+
+  font-weight: 900;
+}
+
+
+/* =========================================
+   VENCEDOR
+========================================= */
+
+.race-winner {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+
+  margin-top: 15px;
+}
+
+
+.race-winner > span {
+  color: var(--color-text-muted);
+
+  font-size: 6px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.1em;
+}
+
+
+.race-winner strong {
+  display: flex;
+
+  align-items: center;
+
+  color: var(--color-text);
+
+  font-size: 10px;
+
+  font-weight: 900;
+}
+
+
+.race-winner small {
+  color: var(--color-text-secondary);
+
+  font-size: 7px;
+
+  font-weight: 700;
+}
+
+
+.race-winner-trophy {
+  color: var(--color-success);
+}
+
+
+/* =========================================
+   FOOTER DOS CARDS
+========================================= */
+
+.race-card-footer {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-top: 15px;
+
+  padding-top: 10px;
+
+  border-top: 1px solid var(--color-border);
+}
+
+
+.race-card-footer span {
+  color: var(--color-text-muted);
+
+  font-size: 6px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.07em;
+}
+
+
+.race-card-footer b {
+  color: var(--color-text-muted);
+
+  font-size: 6px;
+
+  font-weight: 900;
+}
+
+
+.race-card-footer b.green {
+  color: var(--color-success);
+}
+
+
+/* =========================================
+   RESUMO
+========================================= */
+
+.calendar-summary {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 10px;
+
+  margin-top: 20px;
+}
+
+
+.summary-card {
+  padding: 20px;
+
+  background: var(--color-surface);
+
+  border: 1px solid var(--color-border);
+
+  text-align: left;
+}
+
+
+.summary-card span {
+  display: block;
+
+  color: var(--color-text-muted);
+
+  font-size: 6px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.1em;
+}
+
+
+.summary-card strong {
+  display: block;
+
+  margin-top: 8px;
+
+  color: var(--color-text);
+
+  font-size: 32px;
+
+  font-weight: 900;
+
+  line-height: 1;
+}
+
+
+.summary-card small {
+  display: block;
+
+  margin-top: 7px;
+
+  color: var(--color-text-secondary);
+
+  font-size: 6px;
+
+  font-weight: 800;
+}
+
+
+/* =========================================
+   RESPONSIVO — TABLET
+========================================= */
+
+@media (max-width: 1050px) {
+
+  .race-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+
+  .next-race {
+    grid-template-columns:
+      minmax(0, 1.2fr)
+      minmax(320px, 0.9fr);
+
+    min-height: 540px;
+  }
+
+
+  .next-race-main {
+    padding: 25px;
+  }
+
+
+  .next-race-details {
+    margin-top: 28px;
+  }
+
+
+  .next-race-details h2 {
+    font-size: 42px;
+  }
+
+
+  .next-race-track {
+    flex-basis: 260px;
+  }
+
+
+  .next-race-track img {
+    max-width: 430px;
+
+    height: 220px;
+  }
+
+
+  .schedule-item {
+    grid-template-columns:
+      72px
+      minmax(0, 1fr)
+      45px;
+  }
+
+}
+
+
+/* =========================================
+   RESPONSIVO — MOBILE GRANDE
+========================================= */
+
+@media (max-width: 850px) {
+
+  .calendar-heading {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+
+  .calendar-filters {
+    flex-wrap: wrap;
+  }
+
+
+  .calendar-search {
+    width: 100%;
+
+    min-width: 0;
+
+    margin-left: 0;
+  }
+
+
+  .next-race {
+    grid-template-columns: 1fr;
+
+    min-height: auto;
+  }
+
+
+  .next-race-track {
+    order: -1;
+
+    flex-basis: auto;
+
+    min-height: 300px;
+
+    padding: 0;
+
+    border-left: 0;
+
+    border-bottom: none;
+  }
+
+
+  .next-race-track img {
+    width: 90%;
+
+    max-width: 450px;
+
+    height: 250px;
+  }
+
+
+  .next-race-main {
+    padding: 25px 22px;
+  }
+
+
+  .next-race-side {
+    padding: 20px;
+  }
+
+
+  .next-race-side .next-race-schedule {
+    margin-top: 15px;
+  }
+
+
+  .countdown-grid {
+    grid-template-columns:
+      repeat(4, minmax(0, 1fr));
+  }
+
+
+  .race-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+
+  .calendar-summary {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+/* =========================================
+   RESPONSIVO — MOBILE
+========================================= */
+
+@media (max-width: 550px) {
+
+  .calendar {
+    width: 100%;
+    padding: 15px 12px 50px;
+  }
+
+
+  .calendar-heading h1 {
+    font-size: 40px;
+  }
+
+
+  .calendar-progress-top {
+    flex-wrap: wrap;
+  }
+
+
+  .calendar-progress-top small {
+    width: 100%;
+
+    margin-left: 0;
+  }
+
+
+  .calendar-filters {
+    gap: 6px;
+  }
+
+
+  .calendar-filters button {
+    flex: 1;
+  }
+
+
+  .calendar-search {
+    min-width: 100%;
+  }
+
+
+  .next-race-main {
+    padding: 20px;
+  }
+
+
+  .next-race-top {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 10px;
+  }
+
+
+  .next-race-top > div {
+    flex-wrap: wrap;
+  }
+
+
+  .next-race-details {
+    margin-top: 25px;
+  }
+
+
+  .next-race-details h2 {
+    font-size: 34px;
+  }
+
+
+  .next-race-date {
+    flex-wrap: wrap;
+
+    gap: 15px 25px;
+  }
+
+
+  .next-race-track {
+    min-height: 240px;
+
+    padding: 10px;
+  }
+
+
+  .next-race-track img {
+    width: 90%;
+
+    height: 210px;
+  }
+
+
+  .schedule-item {
+    grid-template-columns:
+      75px
+      minmax(0, 1fr)
+      45px;
+
+    padding: 0 7px;
+  }
+
+
+  .schedule-date {
+    font-size: 5px;
+  }
+
+
+  .schedule-item strong {
+    font-size: 6px;
+  }
+
+
+  .schedule-time {
+    font-size: 6px;
+  }
+
+
+  .countdown-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+
+  .countdown-item strong {
+    font-size: 22px;
+  }
+
+
+  .race-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .calendar-summary {
+    grid-template-columns: 1fr;
+
+    padding: 0;
+  }
+
+
+  .race-card {
+    min-width: 0;
+  }
+
+
+  .race-card h3 {
+    font-size: 20px;
+  }
+
+
+  .section-title {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 10px;
+  }
+
+}
